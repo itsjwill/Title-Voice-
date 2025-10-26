@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
+import Logo from './Logo'
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -43,16 +44,10 @@ const Navigation = () => {
                   {/* Logo */}
                   <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-3"
                   >
-                    <Link to="/" className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] flex items-center justify-center">
-                        <Zap className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-2xl font-bold font-['Urbanist']">
-                        <span className="text-white">Title</span>
-                        <span className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] bg-clip-text text-transparent"> Voice</span>
-                      </span>
+                    <Link to="/">
+                      <Logo showText={true} size="default" />
                     </Link>
                   </motion.div>
 
@@ -82,6 +77,7 @@ const Navigation = () => {
               boxShadow: "0 10px 30px rgba(0, 128, 255, 0.3)"
             }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
           >
             Get in Touch
           </motion.button>
@@ -126,6 +122,7 @@ const Navigation = () => {
                   className="block bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] text-white px-6 py-3 rounded-xl font-semibold text-center w-full font-['Urbanist']"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
                 >
                   Get in Touch
                 </motion.button>

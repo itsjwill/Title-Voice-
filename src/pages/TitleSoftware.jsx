@@ -272,6 +272,7 @@ const TitleSoftware = () => {
                 className="bg-white text-[#1B262C] px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
               >
                 Schedule Integration Demo
               </motion.button>

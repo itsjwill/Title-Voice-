@@ -48,11 +48,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-navy-300 rounded-full;
+  @apply bg-primary-300 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-navy-400;
+  @apply bg-primary-400;
 }
 
 /* Smooth scrolling */

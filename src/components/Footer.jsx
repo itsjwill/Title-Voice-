@@ -1,7 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight, Zap } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Twitter, ArrowRight, Zap } from 'lucide-react'
+import Logo from './Logo'
 
 const Footer = () => {
   const [ref, inView] = useInView({
@@ -14,7 +15,7 @@ const Footer = () => {
       { name: 'Solutions', href: '/solutions' },
       { name: 'Workflow', href: '/workflows' },
       { name: 'Pricing', href: '/pricing' },
-      { name: 'Book a Demo', href: '#demo' }
+      { name: 'Book a Demo', href: 'https://cal.com/title-voice-ai-tsigyx/30min' }
     ],
     company: [
       { name: 'About Us', href: '#about' },
@@ -37,7 +38,7 @@ const Footer = () => {
   }
 
   const socialLinks = [
-    { icon: <Linkedin className="w-5 h-5" />, href: '#', label: 'LinkedIn' },
+    { icon: <Linkedin className="w-5 h-5" />, href: 'https://www.linkedin.com/company/title-voice/?viewAsMember=true', label: 'LinkedIn' },
     { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter' },
     { icon: <Mail className="w-5 h-5" />, href: '#', label: 'Email' }
   ]
@@ -77,13 +78,8 @@ const Footer = () => {
           {/* Company Info */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
             <div className="mb-6">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-white" />
-                </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] bg-clip-text text-transparent">
-                  Title Voice
-                </span>
+              <div className="mb-4">
+                <Logo showText={true} size="default" />
               </div>
               <p className="text-[#C5C5D0] mb-6 leading-relaxed">
                 AI for the Title Industry — Never miss a call again with our 24/7 AI receptionist.
@@ -94,15 +90,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-[#C5C5D0]">
                 <Mail className="w-4 h-4" />
-                <span>hello@titlevoice.ai</span>
-              </div>
-              <div className="flex items-center gap-3 text-[#C5C5D0]">
-                <Phone className="w-4 h-4" />
-                <span>(555) 123-4567</span>
+                <span>support@titlevoice.ai</span>
               </div>
               <div className="flex items-center gap-3 text-[#C5C5D0]">
                 <MapPin className="w-4 h-4" />
-                <span>Nashville, TN</span>
+                <span>Akron, OH</span>
               </div>
             </div>
 

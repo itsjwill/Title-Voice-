@@ -36,37 +36,18 @@ const Pricing = () => {
 
   const pricingPlans = [
     {
-      name: 'Basic',
-      price: '$99',
-      period: '/ Month',
-      description: 'Perfect for small title companies getting started with AI automation.',
-      badge: 'Most Pick',
-      icon: Rocket,
-      projects: 'Unlimited Calls',
-      revisions: 'Single Location',
-      features: [
-        '24/7 AI Title Receptionist',
-        'Deal status inquiries',
-        'Appointment scheduling',
-        'Basic CRM integration',
-        'Call transcripts & summaries',
-        'Email support',
-        'Cancel anytime',
-        '$0 setup fee'
-      ],
-      highlight: false
-    },
-    {
       name: 'Professional',
-      price: '$299',
+      price: '$1,500',
       period: '/ Month',
       description: 'Ideal for growing title companies with multiple locations.',
-      badge: 'Advanced',
+      badge: 'Most Popular',
       icon: Bell,
-      projects: 'Unlimited Calls',
+      projects: '1,500 Free Minutes',
       revisions: 'Multi-location',
       features: [
-        'Everything in Basic',
+        'Business Hours AI Title Receptionist',
+        'Deal status inquiries',
+        'Appointment scheduling',
         'Multi-location team management',
         'Escalation to live agent (optional)',
         'Multilingual intake support',
@@ -79,20 +60,20 @@ const Pricing = () => {
     },
     {
       name: 'Enterprise',
-      price: '$599',
+      price: '$3,500',
       period: '/ Month',
       description: 'Advanced solutions for large title companies and enterprises.',
       badge: 'Recommended',
       icon: Crown,
-      projects: 'Unlimited Calls',
+      projects: '3,500 Free Minutes',
       revisions: 'Unlimited Locations',
       features: [
         'Everything in Professional',
+        '24/7 AI Title Receptionist',
         'Dedicated account manager',
         'Custom integrations',
         'White-label solution',
         'Advanced analytics & reporting',
-        'HIPAA & compliance features',
         'Secure storage + redaction',
         '24/7 dedicated support'
       ],
@@ -100,32 +81,6 @@ const Pricing = () => {
     }
   ]
 
-  const addOns = [
-    {
-      title: 'ResWare Integration',
-      description: 'Direct integration with ResWare title production software',
-      price: '$99/month',
-      icon: Database
-    },
-    {
-      title: 'RamQuest Integration',
-      description: 'Seamless connection with RamQuest title software',
-      price: '$99/month',
-      icon: Database
-    },
-    {
-      title: 'Custom CRM Integration',
-      description: 'Connect with your existing CRM and title software',
-      price: '$199/month',
-      icon: Settings
-    },
-    {
-      title: 'White-label Solution',
-      description: 'Custom branding and deployment for your company',
-      price: '$299/month',
-      icon: Shield
-    }
-  ]
 
   const faqs = [
     {
@@ -184,23 +139,13 @@ const Pricing = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <motion.button
-              className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(0, 128, 255, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Start Free Trial
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
-            <motion.button
               className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(255, 255, 255, 0.2)"
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
             >
               <Calendar className="w-5 h-5" />
               Schedule Demo
@@ -224,11 +169,11 @@ const Pricing = () => {
               </span>
             </h2>
             <p className="text-xl text-white max-w-3xl mx-auto font-['Urbanist']">
-              All plans include our core AI features with no setup fees
+              All plans include our core AI features
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -240,7 +185,7 @@ const Pricing = () => {
                   type: "spring",
                   stiffness: 100
                 }}
-                className="relative p-8 rounded-2xl bg-[#080808] border border-white/10 transition-all duration-300 hover:border-[#4F1AD6]/50 overflow-hidden"
+                className="relative p-8 rounded-2xl bg-[#080808] border border-white/10 transition-all duration-300 hover:border-[#4F1AD6]/50 overflow-hidden h-full flex flex-col"
                 whileHover={{ 
                   scale: 1.02,
                   y: -5,
@@ -257,7 +202,7 @@ const Pricing = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col h-full">
                   {/* Icon and Badge */}
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-lg bg-[#4F1AD6] flex items-center justify-center">
@@ -280,18 +225,9 @@ const Pricing = () => {
                   {/* Description */}
                   <p className="text-white mb-6 text-sm leading-relaxed font-['Urbanist']">{plan.description}</p>
 
-                  {/* Key Metrics */}
-                  <div className="flex gap-3 mb-6">
-                    <div className="bg-gray-800 px-3 py-2 rounded-full">
-                      <span className="text-white text-sm font-['Urbanist']">{plan.projects}</span>
-                    </div>
-                    <div className="bg-gray-800 px-3 py-2 rounded-full">
-                      <span className="text-white text-sm font-['Urbanist']">{plan.revisions}</span>
-                    </div>
-                  </div>
 
                   {/* Features */}
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-3 mb-8 flex-grow">
                     {plan.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <div className="w-5 h-5 rounded-full bg-[#4F1AD6] flex items-center justify-center">
@@ -317,74 +253,6 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Add-ons Section */}
-      <section className="py-20 px-4 bg-black">
-        <div className="container mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 font-['Urbanist']">
-              <span className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] bg-clip-text text-transparent">
-                Add-ons & Extensions
-              </span>
-            </h2>
-            <p className="text-xl text-white max-w-3xl mx-auto font-['Urbanist']">
-              Enhance your plan with additional features and integrations
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {addOns.map((addon, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                className="p-8 rounded-2xl bg-[#080808] border border-white/10 hover:border-[#0080FF]/50 transition-all duration-300"
-                style={{
-                  boxSizing: 'border-box',
-                  width: '100%',
-                  flex: 1,
-                  height: 'min-content',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'flex-start',
-                  padding: '20px',
-                  backgroundColor: '#080808',
-                  overflow: 'hidden',
-                  alignContent: 'center',
-                  flexWrap: 'nowrap',
-                  gap: '0px',
-                  position: 'relative',
-                  borderRadius: '12px'
-                }}
-                whileHover={{ 
-                  scale: 1.02,
-                  y: -5,
-                  boxShadow: "0 20px 40px rgba(0, 128, 255, 0.1)"
-                }}
-              >
-                <div className="w-16 h-16 rounded-lg bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] flex items-center justify-center mb-6">
-                  <addon.icon className="w-8 h-8 text-white" />
-                </div>
-                
-                <h3 className="text-xl font-bold text-white mb-2 font-['Urbanist']">{addon.title}</h3>
-                <p className="text-white mb-4 font-['Urbanist']">{addon.description}</p>
-                <div className="text-2xl font-bold text-[#0080FF] font-['Urbanist']">{addon.price}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-20 px-4">
@@ -470,23 +338,13 @@ const Pricing = () => {
               transition={{ delay: 0.2 }}
             >
               <motion.button
-                className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2"
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(0, 128, 255, 0.3)"
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
-              <motion.button
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2"
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: "0 20px 40px rgba(255, 255, 255, 0.2)"
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
               >
                 <Calendar className="w-5 h-5" />
                 Schedule Demo

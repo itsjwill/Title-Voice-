@@ -307,23 +307,13 @@ const Solutions = () => {
               transition={{ delay: 0.2 }}
             >
               <motion.button
-                className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2"
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(0, 128, 255, 0.3)"
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
-              <motion.button
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2"
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: "0 20px 40px rgba(255, 255, 255, 0.2)"
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
               >
                 <Calendar className="w-5 h-5" />
                 Schedule Demo

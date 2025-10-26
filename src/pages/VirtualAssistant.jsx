@@ -97,7 +97,9 @@ const VirtualAssistant = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
             >
               <motion.a
-                href="#demo"
+                href="https://cal.com/title-voice-ai-tsigyx/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-white text-[#1B262C] px-8 py-4 rounded-lg font-semibold text-center hover:shadow-lg transition-all duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

@@ -31,6 +31,7 @@ const Home = () => {
   const [activeSection, setActiveSection] = useState('receptionist')
   const [showMiniNav, setShowMiniNav] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
+  const [activeCategory, setActiveCategory] = useState('ai-answering-service')
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
 
@@ -41,6 +42,100 @@ const Home = () => {
     { id: 'scheduler', title: 'Scheduler', icon: Calendar },
     { id: 'warm-transfers', title: 'Warm Transfers', icon: Users },
     { id: 'outbound-campaigns', title: 'Outbound Campaigns', icon: Target }
+  ]
+
+  // Categories for the systems section
+  const categories = [
+    {
+      id: 'call-handling',
+      title: 'CALL HANDLING',
+      items: ['24/7 Call Answering', 'Client Inquiry Handling', 'Emergency Response'],
+      content: {
+        title: 'CALL HANDLING',
+        description: 'Professional call management for title companies',
+        features: [
+          {
+            title: 'ANIMATION',
+            subtitle: 'Call Processing',
+            description: 'Advanced call routing and queue management for seamless client communication.',
+            visual: 'bars'
+          },
+          {
+            title: 'IMPLEMENTATION',
+            subtitle: 'Call Management System',
+            description: 'Implement robust call handling with automated responses and human escalation.',
+            code: `const callHandling = new TitleVoiceAI();
+callHandling.configure({
+  mode: "call_management",
+  features: ["queue_management", "call_routing", "escalation"],
+  hours: "24/7"
+});`
+          }
+        ],
+        integrations: ['Phone Systems', 'CRM Integration', 'Call Recording'],
+        capabilities: ['Queue Management', 'Call Routing', 'Escalation Handling']
+      }
+    },
+    {
+      id: 'ai-answering-service',
+      title: 'AI ANSWERING SERVICE',
+      items: ['Smart Call Routing', 'Client Information Access', 'Appointment Scheduling'],
+      content: {
+        title: 'AI ANSWERING SERVICE',
+        description: 'Intelligent AI-powered answering service for title companies',
+        features: [
+          {
+            title: 'ANIMATION',
+            subtitle: 'Smart Call Handling',
+            description: 'AI answers calls with human-like intelligence, understanding client needs and providing accurate responses.',
+            visual: 'bars'
+          },
+          {
+            title: 'IMPLEMENTATION',
+            subtitle: 'AI Answering Service',
+            description: 'Deploy AI answering service with natural language processing and client database integration.',
+            code: `const titleVoice = new TitleVoiceAI();
+titleVoice.configure({
+  mode: "answering_service",
+  integrations: [ClientDatabase, TitleSoftware],
+  features: ["call_routing", "appointment_scheduling"]
+});`
+          }
+        ],
+        integrations: ['Client Database', 'Title Software', 'Calendar Systems'],
+        capabilities: ['24/7 Availability', 'Natural Conversations', 'Instant Responses']
+      }
+    },
+    {
+      id: 'title-company-integrations',
+      title: 'TITLE COMPANY INTEGRATIONS',
+      items: ['Title software integration', 'Client database access', 'Document management'],
+      content: {
+        title: 'TITLE COMPANY INTEGRATIONS',
+        description: 'Seamless integration with title company software and workflows',
+        features: [
+          {
+            title: 'ANIMATION',
+            subtitle: 'System Integration',
+            description: 'Connect with existing title company software and databases for comprehensive workflow automation.',
+            visual: 'bars'
+          },
+          {
+            title: 'IMPLEMENTATION',
+            subtitle: 'Integration Setup',
+            description: 'Configure integrations with title software, document management, and client databases.',
+            code: `const integrations = new TitleVoiceAI();
+integrations.configure({
+  mode: "system_integration",
+  connections: [TitleSoftware, DocumentManagement, ClientDatabase],
+  automation: ["workflow_automation", "data_sync"]
+});`
+          }
+        ],
+        integrations: ['Title Software', 'Document Management', 'Client Database'],
+        capabilities: ['Workflow Automation', 'Data Synchronization', 'API Connectivity']
+      }
+    }
   ]
 
   // Handle scroll to show/hide following nav and track active section
@@ -86,6 +181,8 @@ const Home = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // No need for complex script loading - using iframe approach
 
   // Enhanced smooth scroll function with spring animation
   const scrollToSection = (sectionId) => {
@@ -211,38 +308,38 @@ const Home = () => {
   const pricingPlans = [
     {
       name: 'Basic',
-      price: '$99',
+      price: '$1,500',
       period: '/ Month',
-      description: 'Designers can take control of HTML, CSS, and JavaScript in a visual canvas — while marketers can work with pre-made',
+      description: 'Perfect for small title companies getting started with AI automation.',
       badge: 'Most Pick',
       icon: '🚀',
-      projects: '100+ Projects',
-      revisions: '6 - 12 Revisions',
-      features: ['All templates unlocked', 'Unlimited Licenses', 'Lifetime Updates', 'Email support', '30-Days Money-back Guarantee'],
+      projects: '1,500 Free Minutes',
+      revisions: 'Single Location',
+      features: ['24/7 AI Title Receptionist', 'Deal status inquiries', 'Appointment scheduling', 'Basic CRM integration', 'Call transcripts & summaries', 'Email support', 'Cancel anytime', '$0 setup fee'],
       highlight: false
     },
     {
       name: 'Professional',
-      price: '$599',
+      price: '$2,000',
       period: '/ Month',
-      description: 'Ideal for growing agencies and small businesses.',
+      description: 'Ideal for growing title companies with multiple locations.',
       badge: 'Advanced',
       icon: '🔔',
-      projects: '150+ Projects',
-      revisions: '125+ Revisions',
-      features: ['All templates unlocked', 'Unlimited Licenses', 'Lifetime Updates', 'Email support', '30-Days Money-back Guarantee'],
+      projects: '2,000 Free Minutes',
+      revisions: 'Multi-location',
+      features: ['Everything in Basic', 'Multi-location team management', 'Escalation to live agent (optional)', 'Multilingual intake support', 'Custom script & workflows', 'Advanced CRM integrations', 'Priority support (email + phone)', 'Volume discounts available'],
       highlight: true
     },
     {
       name: 'Enterprise',
-      price: '$2,599',
+      price: '$3,500',
       period: '/ Month',
-      description: 'Advanced solutions for large teams and startups.',
+      description: 'Advanced solutions for large title companies and enterprises.',
       badge: 'Recommended',
-      icon: '📖',
-      projects: '180+ Projects',
-      revisions: '140+ Revisions',
-      features: ['All templates unlocked', 'Unlimited Licenses', 'Lifetime Updates', 'Email support', '30-Days Money-back Guarantee'],
+      icon: '👑',
+      projects: '3,500 Free Minutes',
+      revisions: 'Unlimited Locations',
+      features: ['Everything in Professional', 'Dedicated account manager', 'Custom integrations', 'White-label solution', 'Advanced analytics & reporting', 'HIPAA & compliance features', 'Secure storage + redaction', '24/7 dedicated support'],
       highlight: false
     }
   ]
@@ -277,7 +374,7 @@ const Home = () => {
           >
             <div className="mb-6">
               <h1 className="text-4xl md:text-6xl font-bold text-white font-['Urbanist']">
-                AI Voice Agents for Title Companies.
+                Never miss a call again.
               </h1>
             </div>
             <div className="mb-8">
@@ -321,30 +418,17 @@ const Home = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1 }}
+              onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
             >
               Book a Demo
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
-            <motion.button
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2 font-['Urbanist']"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(255, 255, 255, 0.2)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1 }}
-            >
-              <Play className="w-5 h-5" />
-              See Workflow
             </motion.button>
           </motion.div>
         </div>
       </section>
 
       {/* Why Title Companies Need An AI Answering Service Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-16 px-4 bg-black">
         <div className="container mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -356,153 +440,335 @@ const Home = () => {
             }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 font-['Urbanist'] text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Urbanist'] text-white">
               Why Title Companies Need An AI Answering Service
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Missed Calls = Missed Business */}
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Left Side List */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6,
-                delay: 0.1,
-                type: "spring",
-                stiffness: 100
-              }}
-              className="bg-gray-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
-              whileHover={{ 
-                scale: 1.02,
-                y: -5
-              }}
-            >
-              <div className="text-center">
-                <motion.div
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] flex items-center justify-center mx-auto mb-6 shadow-lg"
-                  whileHover={{ 
-                    rotate: 360,
-                    scale: 1.1
-                  }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Phone className="w-8 h-8 text-white" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-['Urbanist']">
-                  Missed Calls = Missed Business
-                </h3>
-                <p className="text-gray-700 leading-relaxed font-['Urbanist']">
-                  Every missed call is a missed opportunity. Title companies lose potential clients when calls go unanswered. An AI answering service ensures every call is captured, qualified, and converted into business opportunities 24/7.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Clients Expect 24/7 Availability */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
                 duration: 0.6,
                 delay: 0.2,
                 type: "spring",
                 stiffness: 100
               }}
-              className="bg-gray-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
-              whileHover={{ 
-                scale: 1.02,
-                y: -5
-              }}
+              className="lg:col-span-1"
             >
-              <div className="text-center">
-                <motion.div
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-[#4F1AD6] to-[#0080FF] flex items-center justify-center mx-auto mb-6 shadow-lg"
-                  whileHover={{ 
-                    rotate: 360,
-                    scale: 1.1
-                  }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Users className="w-8 h-8 text-white" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-['Urbanist']">
-                  Clients Expect 24/7 Availability
+              <div className="bg-gray-950 rounded-lg p-4 border border-gray-900">
+                <h3 className="text-sm font-semibold text-[#0080FF] mb-4 font-['Urbanist'] flex items-center gap-2 uppercase tracking-wide">
+                  <div className="w-1.5 h-1.5 bg-[#0080FF] rounded-full"></div>
+                  SYSTEMS
                 </h3>
-                <p className="text-gray-700 leading-relaxed font-['Urbanist']">
-                  Real estate transactions don't follow business hours. Clients need immediate answers about closing status, document requirements, and scheduling. An AI answering service keeps your title company responsive even when staff are unavailable.
+                
+                <div className="mb-6">
+                  <h4 className="text-lg font-bold text-white mb-2 font-['Urbanist']">
+                    Never miss a call with AI-powered answering services.
+                  </h4>
+                  <p className="text-gray-500 text-xs font-['Urbanist']">
+                    Title companies need reliable answering services to handle client calls 24/7.
                 </p>
+              </div>
+                
+                <div className="space-y-3">
+                  {categories.map((category) => (
+                    <div
+                      key={category.id}
+                      className={`cursor-pointer transition-all duration-200 ${
+                        activeCategory === category.id
+                          ? 'bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] rounded-md p-2 border border-transparent'
+                          : 'hover:bg-gray-800 rounded-md p-2'
+                      }`}
+                      onClick={() => setActiveCategory(category.id)}
+                    >
+                      <h5 className={`text-xs font-semibold mb-1 font-['Urbanist'] uppercase tracking-wide flex items-center gap-1 ${
+                        activeCategory === category.id ? 'text-white' : 'text-gray-400'
+                      }`}>
+                        {activeCategory === category.id && (
+                          <div className="w-1 h-1 bg-white rounded-full"></div>
+                        )}
+                        {category.title}
+                      </h5>
+                      <ul className={`text-xs space-y-0.5 font-['Urbanist'] ${
+                        activeCategory === category.id ? 'text-white' : 'text-gray-500'
+                      }`}>
+                        {category.items.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
 
-            {/* Title Work Needs Title Expertise */}
+            {/* Right Side View */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6,
-                delay: 0.3,
-                type: "spring",
-                stiffness: 100
-              }}
-              className="bg-gray-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
-              whileHover={{ 
-                scale: 1.02,
-                y: -5
-              }}
-            >
-              <div className="text-center">
-                <motion.div
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] flex items-center justify-center mx-auto mb-6 shadow-lg"
-                  whileHover={{ 
-                    rotate: 360,
-                    scale: 1.1
-                  }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Settings className="w-8 h-8 text-white" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-['Urbanist']">
-                  Title Work Needs Title Expertise
-                </h3>
-                <p className="text-gray-700 leading-relaxed font-['Urbanist']">
-                  Generic call centers can't handle title industry complexities. Title companies need answering services trained in title terminology, closing processes, and regulatory requirements to maintain professionalism and accuracy.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Scaling with Humans Is Expensive */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
                 duration: 0.6,
                 delay: 0.4,
                 type: "spring",
                 stiffness: 100
               }}
-              className="bg-gray-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
-              whileHover={{ 
-                scale: 1.02,
-                y: -5
-              }}
+              className="lg:col-span-2"
             >
-              <div className="text-center">
+              <div className="bg-gray-950 rounded-lg p-4 border border-gray-900">
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold text-white mb-2 font-['Urbanist'] flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[#0080FF] rounded-full"></div>
+                    {categories.find(cat => cat.id === activeCategory)?.content.title || 'AI ANSWERING SERVICE'}
+                  </h3>
+              </div>
+
+                {/* Dynamic Content Based on Selected Category */}
+                {(() => {
+                  const currentCategory = categories.find(cat => cat.id === activeCategory);
+                  if (!currentCategory) return null;
+                  
+                  return (
+                    <>
+                      {/* Animation and Implementation Side by Side */}
+                      <div className="grid md:grid-cols-2 gap-3 mb-4">
+                        {/* Animation Card */}
+                        <div className="bg-gray-950 rounded-md p-3 border border-gray-900">
+                          <h4 className="text-xs font-semibold text-gray-300 mb-2 font-['Urbanist'] uppercase tracking-wide">
+                            {currentCategory.content.features[0].title}
+                          </h4>
+                          <div className="flex justify-center mb-2">
+                            {activeCategory === 'call-handling' && (
+                              <div className="relative w-16 h-16 flex items-center justify-center">
+                                {/* Phone icon animation */}
                 <motion.div
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-[#4F1AD6] to-[#0080FF] flex items-center justify-center mx-auto mb-6 shadow-lg"
-                  whileHover={{ 
-                    rotate: 360,
-                    scale: 1.1
-                  }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <BarChart3 className="w-8 h-8 text-white" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-['Urbanist']">
-                  Scaling with Humans Is Expensive
-                </h3>
-                <p className="text-gray-700 leading-relaxed font-['Urbanist']">
-                  Hiring full-time staff for 24/7 coverage is costly and inefficient. An AI answering service provides comprehensive coverage without increasing payroll, benefits, or training costs, allowing title companies to scale efficiently.
-                </p>
+                                  className="w-6 h-6 bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] rounded-sm"
+                                  animate={{
+                                    rotate: [0, 5, -5, 0],
+                                    scale: [1, 1.1, 1]
+                                  }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                  }}
+                                />
+                                {/* Call waves */}
+                                <motion.div
+                                  className="absolute w-8 h-8 border-2 border-[#0080FF] rounded-full"
+                                  animate={{
+                                    scale: [0.8, 1.5, 0.8],
+                                    opacity: [0.8, 0.2, 0.8]
+                                  }}
+                                  transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                  }}
+                                />
+                                <motion.div
+                                  className="absolute w-12 h-12 border-2 border-[#0080FF] rounded-full"
+                                  animate={{
+                                    scale: [0.6, 1.8, 0.6],
+                                    opacity: [0.6, 0.1, 0.6]
+                                  }}
+                                  transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.3
+                                  }}
+                                />
+              </div>
+                            )}
+
+                            {activeCategory === 'ai-answering-service' && (
+                              <div className="relative w-16 h-16 flex items-center justify-center">
+                                {/* AI brain animation */}
+            <motion.div
+                                  className="w-4 h-4 bg-[#0080FF] rounded-full"
+                                  animate={{
+                                    scale: [1, 1.3, 1],
+                                    opacity: [0.8, 1, 0.8]
+                                  }}
+              transition={{ 
+                                    duration: 1.8,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                  }}
+                                />
+                                {/* Neural network connections */}
+                                <motion.div
+                                  className="absolute w-8 h-8 border-2 border-[#0080FF] rounded-full"
+                                  animate={{
+                                    scale: [0.5, 1.2, 0.5],
+                                    opacity: [0.6, 0.2, 0.6]
+                                  }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.2
+                                  }}
+                                />
+                <motion.div
+                                  className="absolute w-12 h-12 border-2 border-[#0080FF] rounded-full"
+                                  animate={{
+                                    scale: [0.3, 1.4, 0.3],
+                                    opacity: [0.4, 0.1, 0.4]
+                                  }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.4
+                                  }}
+                                />
+                                <motion.div
+                                  className="absolute w-16 h-16 border-2 border-[#0080FF] rounded-full"
+                                  animate={{
+                                    scale: [0.2, 1.6, 0.2],
+                                    opacity: [0.3, 0.05, 0.3]
+                                  }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.6
+                                  }}
+                                />
+              </div>
+                            )}
+
+                            {activeCategory === 'title-company-integrations' && (
+                              <div className="relative w-16 h-16 flex items-center justify-center">
+                                {/* Database/Integration animation */}
+            <motion.div
+                                  className="w-5 h-3 bg-[#0080FF] rounded-sm"
+                                  animate={{
+                                    y: [0, -2, 0],
+                                    scale: [1, 1.05, 1]
+                                  }}
+              transition={{ 
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                  }}
+                                />
+                                {/* Data flow lines */}
+                                <motion.div
+                                  className="absolute w-2 h-8 bg-[#0080FF] rounded-full"
+                                  animate={{
+                                    scaleY: [0.5, 1.2, 0.5],
+                                    opacity: [0.7, 1, 0.7]
+                                  }}
+                                  transition={{
+                                    duration: 1.2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                  }}
+                                />
+                <motion.div
+                                  className="absolute w-2 h-8 bg-[#0080FF] rounded-full"
+                                  style={{ left: '8px' }}
+                                  animate={{
+                                    scaleY: [0.3, 1.4, 0.3],
+                                    opacity: [0.5, 0.8, 0.5]
+                                  }}
+                                  transition={{
+                                    duration: 1.2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.3
+                                  }}
+                                />
+                                <motion.div
+                                  className="absolute w-2 h-8 bg-[#0080FF] rounded-full"
+                                  style={{ right: '8px' }}
+                                  animate={{
+                                    scaleY: [0.4, 1.1, 0.4],
+                                    opacity: [0.6, 0.9, 0.6]
+                                  }}
+                                  transition={{
+                                    duration: 1.2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.6
+                                  }}
+                                />
+                              </div>
+                            )}
+                          </div>
+              <div className="text-center">
+                            <h5 className="text-[#0080FF] font-medium mb-1 text-xs font-['Urbanist']">
+                              {currentCategory.content.features[0].subtitle}
+                            </h5>
+                            <p className="text-gray-500 text-xs font-['Urbanist']">
+                              {currentCategory.content.features[0].description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Implementation Card */}
+                        <div className="bg-gray-950 rounded-md p-3 border border-gray-900">
+                          <div className="flex justify-between items-center mb-2">
+                            <h4 className="text-xs font-semibold text-gray-300 font-['Urbanist'] uppercase tracking-wide">
+                              {currentCategory.content.features[1].title}
+                            </h4>
+                            <motion.button
+                              className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] text-white px-2 py-1 rounded text-xs font-medium font-['Urbanist']"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              RUN
+                            </motion.button>
+                          </div>
+                          <div className="bg-black rounded p-2 font-mono text-xs overflow-x-auto">
+                            <pre className="text-gray-400 whitespace-pre-wrap break-words">
+                              {currentCategory.content.features[1].code}
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })()}
+
+                {/* Dynamic Integrations & Capabilities */}
+                {(() => {
+                  const currentCategory = categories.find(cat => cat.id === activeCategory);
+                  if (!currentCategory) return null;
+                  
+                  return (
+                    <div className="grid md:grid-cols-2 gap-3">
+                      <div className="bg-gray-950 rounded-md p-3 border border-gray-900">
+                        <h4 className="text-xs font-semibold text-gray-300 mb-2 font-['Urbanist'] uppercase tracking-wide">INTEGRATIONS</h4>
+                        <ul className="space-y-0.5">
+                          {currentCategory.content.integrations.map((item, index) => (
+                            <li key={index} className="text-gray-500 text-xs font-['Urbanist'] flex items-center gap-1">
+                              <div className="w-0.5 h-0.5 bg-[#0080FF] rounded-full"></div>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="bg-gray-950 rounded-md p-3 border border-gray-900">
+                        <h4 className="text-xs font-semibold text-gray-300 mb-2 font-['Urbanist'] uppercase tracking-wide">CAPABILITIES</h4>
+                        <ul className="space-y-0.5">
+                          {currentCategory.content.capabilities.map((item, index) => (
+                            <li key={index} className="text-gray-500 text-xs font-['Urbanist'] flex items-center gap-1">
+                              <div className="w-0.5 h-0.5 bg-[#0080FF] rounded-full"></div>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </motion.div>
           </div>
@@ -526,20 +792,10 @@ const Home = () => {
                 boxShadow: "0 10px 30px rgba(0, 128, 255, 0.2)"
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
             >
               Book A Demo
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
-            <motion.button
-              className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center font-['Urbanist']"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(0, 128, 255, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Try For Free
-              <Zap className="w-5 h-5" />
             </motion.button>
           </motion.div>
         </div>
@@ -723,7 +979,7 @@ const Home = () => {
               {/* Listen Button */}
               <div className="flex items-center gap-4">
                 <motion.button
-                  className="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                  className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center hover:shadow-lg transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -988,7 +1244,7 @@ const Home = () => {
               {/* Listen Button */}
               <div className="flex items-center gap-4">
                 <motion.button
-                  className="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                  className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center hover:shadow-lg transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1252,7 +1508,7 @@ const Home = () => {
               {/* Listen Button */}
               <div className="flex items-center gap-4">
                 <motion.button
-                  className="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                  className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center hover:shadow-lg transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1431,7 +1687,7 @@ const Home = () => {
               {/* Listen Button */}
               <div className="flex items-center gap-4">
                 <motion.button
-                  className="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                  className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center hover:shadow-lg transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1610,7 +1866,7 @@ const Home = () => {
               {/* Listen Button */}
               <div className="flex items-center gap-4">
                 <motion.button
-                  className="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                  className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center hover:shadow-lg transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1930,16 +2186,22 @@ const Home = () => {
                 <p className="text-white/80 font-['Urbanist']">Choose a time that works for you</p>
               </div>
 
-              {/* Calendly Widget Container */}
+              {/* Cal.com Widget Container */}
               <div className="bg-white rounded-xl p-4 shadow-lg">
-                <div 
-                  className="calendly-inline-widget" 
-                  data-url="https://calendly.com/your-calendly-link" 
-                  style={{ minWidth: '320px', height: '630px' }}
+                <iframe
+                  src="https://cal.com/title-voice-ai-tsigyx/30min?embed=true&embedType=inline"
+                  style={{
+                    width: '100%',
+                    height: '630px',
+                    border: 'none',
+                    borderRadius: '8px'
+                  }}
+                  title="Cal.com Booking Widget"
+                  loading="lazy"
                 />
               </div>
 
-              {/* Fallback Button if Calendly doesn't load */}
+              {/* Fallback Button if Cal.com doesn't load */}
               <motion.div className="mt-6 text-center">
                 <motion.button
                   className="bg-gradient-to-r from-[#0080FF] to-[#4F1AD6] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center mx-auto font-['Urbanist']"
@@ -1948,10 +2210,10 @@ const Home = () => {
                     boxShadow: "0 20px 40px rgba(0, 128, 255, 0.3)"
                   }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => window.open('https://calendly.com/your-calendly-link', '_blank')}
+                  onClick={() => window.open('https://cal.com/title-voice-ai-tsigyx/30min', '_blank')}
                 >
                   <Calendar className="w-5 h-5" />
-                  Book Demo on Calendly
+                  Book Demo on Cal.com
                 </motion.button>
               </motion.div>
             </motion.div>
